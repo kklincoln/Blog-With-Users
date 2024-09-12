@@ -13,13 +13,21 @@ import os
 #-------------- Import your forms from the forms.py
 from forms import CreatePostForm, RegisterUserForm, LoginUserForm,CommentForm
 
+#--------------------------------------------------------
+# This "Secure Website" project covers the skills outlined below:
+# Hashing and Salting (Encryption & Authentication), Flask routing and forms, WebDev, SQLAchemy DB processes,
+# Webpage Navigation,
+#--------------------------------------------------------
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DB_URI", "sqlite:///posts.db")
 ckeditor = CKEditor(app)
 Bootstrap5(app)
 
-# Configure Flask-Login #https://flask-login.readthedocs.io/en/latest/
+#  CONFIGURE FLASK LOGIN FOR APPLICATION #https://flask-login.readthedocs.io/en/latest/
+#login manager contains the code that lets the app and Flask-Login work together
+# (how to load user from ID, where to send users to login, etc)
 login_manager = LoginManager()
 login_manager.init_app(app)
 #CREATE USER_LOADER CALLBACK: used to reload the user object from the user ID stored in the session;
